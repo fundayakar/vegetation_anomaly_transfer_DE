@@ -1,8 +1,10 @@
 cff-version: 1.2.0
-message: "If you use these materials, please cite the associated manuscript and the archived repository release once a DOI is available."
+message: "If you use these materials, please cite the associated manuscript and the archived release once a DOI is available."
 title: "From Random Splits to Spatiotemporal Transfer: Evaluating Machine-Learning Prediction of Vegetation Anomalies"
 type: software
 authors:
   - family-names: Yakar
     given-names: Funda
+repository-code: "https://github.com/fundayakar/vegetation_anomaly_transfer_DE"
+license: MIT
 date-released: 2026-11-01
