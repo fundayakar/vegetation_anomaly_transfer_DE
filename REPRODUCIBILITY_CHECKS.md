@@ -32,4 +32,6 @@ The final Python pipeline rebuilds the independent 2001–2016 reference climato
 
 A fresh rerun of this final pipeline was used to align the repository summary tables with the manuscript. The locked environment is recorded in `requirements.txt` and `results/analysis_manifest_final.json`.
 
+The canonical result tables are versioned in this repository and in the archival package. For the parallel Random Forest implementation, repeated runs can differ at approximately the 10⁻⁵–10⁻⁴ level in a small number of AUC values because of parallel floating-point/tie handling; all manuscript values are unchanged at the reported three-decimal precision. Logistic-regression and XGBoost summaries reproduced at the retained precision in the audit reruns.
+
 The complete archival package additionally retains the generated reference statistics, 2,688-row model-ready table, fold-level outputs, and manuscript figures. A persistent Zenodo DOI will be added when that package is released.
