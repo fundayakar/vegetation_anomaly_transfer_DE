@@ -12,7 +12,9 @@ The validated workflow is `code/final_fixedLC_MOD13A3_ERA5_export.js`.
 
 All 24 archived yearly exports (2001–2024) contain 576 records each, for 13,824 total records. They contain no duplicate state × month × class keys. Concatenation and manuscript ordering reproduce `germany_fixedLC_2001_2024_combined.csv` to floating-point precision.
 
-The exact 24 yearly exports and combined file are retained in the archival reproducibility data package. After downloading that package, place the yearly files in `data/yearly_exports/` and the combined file in `data/`, then run:
+The exact 24 yearly exports and combined file are retained in the versioned Zenodo reproducibility package: https://doi.org/10.5281/zenodo.23864094
+
+After downloading that package, place the yearly files in `data/yearly_exports/` and the combined file in `data/`, then run:
 
 ```bash
 python code/validate_final_gee_exports.py \
@@ -34,4 +36,7 @@ A fresh rerun of this final pipeline was used to align the repository summary ta
 
 The canonical result tables are versioned in this repository and in the archival package. For the parallel Random Forest implementation, repeated runs can differ at approximately the 10⁻⁵–10⁻⁴ level in a small number of AUC values because of parallel floating-point/tie handling; all manuscript values are unchanged at the reported three-decimal precision. Logistic-regression and XGBoost summaries reproduced at the retained precision in the audit reruns.
 
-The complete archival package additionally retains the generated reference statistics, 2,688-row model-ready table, fold-level outputs, and manuscript figures. A persistent Zenodo DOI will be added when that package is released.
+The complete archival package additionally retains the generated reference statistics, 2,688-row model-ready table, fold-level outputs, and manuscript figures.
+
+**Archived release:** v1.0.0  
+**DOI:** https://doi.org/10.5281/zenodo.23864094
