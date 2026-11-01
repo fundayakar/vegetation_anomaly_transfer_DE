@@ -1,10 +1,15 @@
 cff-version: 1.2.0
-message: "If you use these materials, please cite the associated manuscript and the archived release once a DOI is available."
+message: "If you use these materials, please cite the versioned Zenodo release and the associated manuscript."
 title: "From Random Splits to Spatiotemporal Transfer: Evaluating Machine-Learning Prediction of Vegetation Anomalies"
 type: software
 authors:
   - family-names: Yakar
     given-names: Funda
+version: "1.0.0"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23864094"
+    description: "Zenodo archival release v1.0.0"
 repository-code: "https://github.com/fundayakar/vegetation_anomaly_transfer_DE"
 license: MIT
 date-released: 2026-11-01
