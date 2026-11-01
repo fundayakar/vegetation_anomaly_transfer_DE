@@ -6,6 +6,9 @@ Reproducibility materials for the manuscript:
 
 **Author:** Funda Yakar
 
+**Version:** v1.0.0  
+**Zenodo DOI:** https://doi.org/10.5281/zenodo.23864094
+
 ## Overview
 
 This repository evaluates whether machine-learning skill for predicting negative monthly vegetation anomalies persists when models are transferred across geography, time, or both. The study uses MODIS NDVI and ERA5-Land hydroclimatic information aggregated within fixed broad land-cover strata across the 16 German federal states.
@@ -91,7 +94,7 @@ ROC-AUC is the primary performance measure. PR-AUC, F1, and Brier score are supp
 
 Run `code/final_fixedLC_MOD13A3_ERA5_export.js` in the Google Earth Engine Code Editor. It creates one CSV task for each year from 2001 through 2024. Each yearly export contains 576 state × month × fixed-land-cover records.
 
-The exact yearly exports used for the manuscript and the combined modelling input are retained in the archival reproducibility package. They will be deposited with the versioned Zenodo release so that the data and code can be cited together with a persistent DOI.
+The exact yearly exports used for the manuscript and the combined modelling input are retained in the versioned Zenodo reproducibility package: https://doi.org/10.5281/zenodo.23864094
 
 The helper scripts `code/combine_yearly_exports.py` and `code/validate_final_gee_exports.py` combine and validate those yearly exports once the archival data package is downloaded.
 
@@ -144,8 +147,10 @@ The recovered final Earth Engine workflow was rerun for 2001 and reproduced the 
 
 ## Data and archival DOI
 
-The data package contains the 24 original yearly Earth Engine exports, the combined modelling input, intermediate model-ready data, complete fold-level outputs, and manuscript figures. A Zenodo DOI will be added here after the repository/data release is archived.
+The complete reproducibility package contains the 24 original yearly Earth Engine exports, the combined modelling input, intermediate model-ready data, complete fold-level outputs, and manuscript figures.
+
+**Version v1.0.0:** https://doi.org/10.5281/zenodo.23864094
 
 ## Citation
 
-Citation metadata are provided in `CITATION.cff`. The archival DOI will be added after the Zenodo release is minted.
+Citation metadata are provided in `CITATION.cff`. The versioned archival release is available at https://doi.org/10.5281/zenodo.23864094.
