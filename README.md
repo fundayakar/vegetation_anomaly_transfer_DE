@@ -10,7 +10,7 @@ Reproducibility materials for the manuscript:
 
 This repository evaluates whether machine-learning skill for predicting negative monthly vegetation anomalies persists when models are transferred across geography, time, or both. The study uses MODIS NDVI and ERA5-Land hydroclimatic information aggregated within fixed broad land-cover strata across the 16 German federal states.
 
-The study is an environmental machine-learning generalization analysis. The binary target is an anomalously low NDVI state relative to an independent reference period; it is not interpreted as a direct physiological vegetation-stress measurement.
+The binary target is an anomalously low NDVI state relative to an independent reference period; it is not interpreted as a direct physiological vegetation-stress measurement.
 
 ## Analytical design
 
@@ -29,7 +29,7 @@ MCD12Q1 Version 6.1 IGBP classes were grouped as forest (1–5), cropland (12), 
 
 MOD13A3 Version 6.1 NDVI retained `SummaryQA` values 0–1. ERA5-Land supplied 2-m air temperature, 0–7 cm volumetric soil water content, and total monthly precipitation. State × class × month values were fraction-weighted on the MOD13A3 valid-data support.
 
-The exact Earth Engine extraction is in `code/final_fixedLC_MOD13A3_ERA5_export.js`.
+The validated Earth Engine extraction is in `code/final_fixedLC_MOD13A3_ERA5_export.js`.
 
 ### Antecedent predictors
 
@@ -75,44 +75,29 @@ ROC-AUC is the primary performance measure. PR-AUC, F1, and Brier score are supp
 │   ├── validate_final_gee_exports.py
 │   └── final_vegetation_anomaly_reproducibility.py
 ├── data/
-│   ├── README.md
-│   ├── yearly_exports/
-│   │   └── germany_fixedLC_mod13a3_era5_2001.csv ... 2024.csv
-│   └── germany_fixedLC_2001_2024_combined.csv
-├── results/
-│   ├── README.md
-│   ├── analysis_manifest_final.json
-│   ├── reference_stats_2001_2016_final.csv
-│   ├── model_ready_2017_2024_AprOct_final.csv
-│   ├── validation_ladder_*.csv
-│   ├── predictor_configuration_*.csv
-│   ├── lead_time_*.csv
-│   └── robustness_q20_*.csv
-└── figures/
-    └── manuscript figures in PNG and PDF format
+│   └── README.md
+└── results/
+    ├── README.md
+    ├── analysis_manifest_final.json
+    ├── validation_ladder_model_comparison_final.csv
+    ├── predictor_configuration_rf_summary_final.csv
+    ├── predictor_configuration_xgboost_summary_final.csv
+    ├── lead_time_rf_summary_final.csv
+    ├── lead_time_xgboost_summary_final.csv
+    └── robustness_q20_summary_final.csv
 ```
 
-## Reproduce the GEE-to-analysis input step
+## Reproduce the Earth Engine extraction
 
-Run `code/final_fixedLC_MOD13A3_ERA5_export.js` in the Google Earth Engine Code Editor. It creates one CSV task for each year from 2001 through 2024.
+Run `code/final_fixedLC_MOD13A3_ERA5_export.js` in the Google Earth Engine Code Editor. It creates one CSV task for each year from 2001 through 2024. Each yearly export contains 576 state × month × fixed-land-cover records.
 
-The archived yearly outputs used in the manuscript are included under `data/yearly_exports/`. They can be recombined with:
+The exact yearly exports used for the manuscript and the combined modelling input are retained in the archival reproducibility package. They will be deposited with the versioned Zenodo release so that the data and code can be cited together with a persistent DOI.
 
-```bash
-python code/combine_yearly_exports.py
-```
-
-The archived yearly exports can be checked against the combined manuscript input with:
-
-```bash
-python code/validate_final_gee_exports.py \
-  --candidate-dir data/yearly_exports \
-  --reference data/germany_fixedLC_2001_2024_combined.csv
-```
+The helper scripts `code/combine_yearly_exports.py` and `code/validate_final_gee_exports.py` combine and validate those yearly exports once the archival data package is downloaded.
 
 ## Reproduce the modelling analysis
 
-Create an environment and install the locked dependencies:
+After obtaining `germany_fixedLC_2001_2024_combined.csv` from the archival data package, create an environment and install the locked dependencies:
 
 ```bash
 python -m venv .venv
@@ -155,8 +140,12 @@ Product citations and methodological details are provided in the manuscript.
 
 ## Reproducibility verification
 
-The final Earth Engine script was rerun for 2001 and reproduced the archived yearly export to floating-point precision. The 24 archived yearly exports also reproduce the combined modelling input. Details are in `REPRODUCIBILITY_CHECKS.md`.
+The recovered final Earth Engine workflow was rerun for 2001 and reproduced the archived 2001 export to floating-point precision. The 24 archived yearly exports also reproduce the combined manuscript modelling input. The final Python pipeline was rerun from that combined input, and the summary tables versioned in this repository correspond to the manuscript results. See `REPRODUCIBILITY_CHECKS.md`.
+
+## Data and archival DOI
+
+The data package contains the 24 original yearly Earth Engine exports, the combined modelling input, intermediate model-ready data, complete fold-level outputs, and manuscript figures. A Zenodo DOI will be added here after the repository/data release is archived.
 
 ## Citation
 
-A versioned archival DOI will be added after the repository release is deposited in Zenodo.
+Citation metadata are provided in `CITATION.cff`. The archival DOI will be added after the Zenodo release is minted.
